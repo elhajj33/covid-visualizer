@@ -33,7 +33,7 @@ export class CurrentData extends React.Component <{}, {Data: DataPoint[]}>
             .then (c=> {
                 const dataPoints: DataPoint[] = [];
 
-                for (let index = 0; index < 9; index++) {
+                for (let index = 0; index < 10; index++) {
                     const datapoint = {Name: c[index].Name, Cases: c[index].CaseData.TotalCases, Deaths: c[index].CaseData.TotalDeaths, Recovered: c[index].CaseData.TotalRecovered};
 
                     dataPoints.push (datapoint);
@@ -51,6 +51,7 @@ export class CurrentData extends React.Component <{}, {Data: DataPoint[]}>
             indexBy: "Name",
             groupMode: "grouped",
             enableLabel: true,
+            colors: ["#224C80", "#81BAFF", "#000000"],
             legends:[
                 {
                     dataFrom: 'keys',
@@ -61,10 +62,10 @@ export class CurrentData extends React.Component <{}, {Data: DataPoint[]}>
                     translateY: -175,
                     itemsSpacing: 2,
                     itemWidth: 100,
-                    itemHeight: 20,
+                    itemHeight: 15,
                     itemDirection: 'left-to-right',
                     itemOpacity: 0.85,
-                    symbolSize: 20,
+                    symbolSize: 15,
                     effects: [
                         {
                             on: 'hover',
