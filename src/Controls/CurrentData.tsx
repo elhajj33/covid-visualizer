@@ -30,35 +30,17 @@ export class CurrentData extends React.Component <{}, {Data: DataPoint[]}>
         const bl = new CountryBL (null);
 
         bl.GetData()
-            .then (c=>{
+            .then (c=> {
                 const dataPoints: DataPoint[] = [];
-                const c1 = {Name: c[0].Name, Cases: c[0].CaseData.TotalCases, Deaths: c[0].CaseData.TotalDeaths, Recovered: c[0].CaseData.TotalRecovered};
-                const c2 = {Name: c[1].Name, Cases: c[1].CaseData.TotalCases, Deaths: c[1].CaseData.TotalDeaths, Recovered: c[1].CaseData.TotalRecovered};
-                const c3 = {Name: c[2].Name, Cases: c[2].CaseData.TotalCases, Deaths: c[2].CaseData.TotalDeaths, Recovered: c[2].CaseData.TotalRecovered};
-                const c4 = {Name: c[3].Name, Cases: c[3].CaseData.TotalCases, Deaths: c[3].CaseData.TotalDeaths, Recovered: c[3].CaseData.TotalRecovered};
-                const c5 = {Name: c[4].Name, Cases: c[4].CaseData.TotalCases, Deaths: c[4].CaseData.TotalDeaths, Recovered: c[4].CaseData.TotalRecovered};
-                const c6 = {Name: c[5].Name, Cases: c[5].CaseData.TotalCases, Deaths: c[5].CaseData.TotalDeaths, Recovered: c[5].CaseData.TotalRecovered};
-                const c7 = {Name: c[6].Name, Cases: c[6].CaseData.TotalCases, Deaths: c[6].CaseData.TotalDeaths, Recovered: c[6].CaseData.TotalRecovered};
-                const c8 = {Name: c[7].Name, Cases: c[7].CaseData.TotalCases, Deaths: c[7].CaseData.TotalDeaths, Recovered: c[7].CaseData.TotalRecovered};
-                const c9 = {Name: c[8].Name, Cases: c[8].CaseData.TotalCases, Deaths: c[8].CaseData.TotalDeaths, Recovered: c[8].CaseData.TotalRecovered};
-                const c10 = {Name: c[9].Name, Cases: c[9].CaseData.TotalCases, Deaths: c[9].CaseData.TotalDeaths, Recovered: c[9].CaseData.TotalRecovered};
 
+                for (let index = 0; index < 9; index++) {
+                    const datapoint = {Name: c[index].Name, Cases: c[index].CaseData.TotalCases, Deaths: c[index].CaseData.TotalDeaths, Recovered: c[index].CaseData.TotalRecovered};
 
-                dataPoints.push (c1);
-                dataPoints.push (c2);
-                dataPoints.push (c3);
-                dataPoints.push (c4);
-                dataPoints.push (c5);
-                dataPoints.push (c6);
-                dataPoints.push (c7);
-                dataPoints.push (c8);
-                dataPoints.push (c9);
-                dataPoints.push (c10);
-
-
+                    dataPoints.push (datapoint);
+                }
                 this.setState ({Data: dataPoints })
-                return c;
-            } );
+
+        });
     }
 
     render () {
