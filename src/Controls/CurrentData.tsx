@@ -39,7 +39,6 @@ export class CurrentData extends React.Component <{}, {Data: DataPoint[]}>
                     dataPoints.push (datapoint);
                 }
                 this.setState ({Data: dataPoints })
-
         });
     }
 

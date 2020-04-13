@@ -1,44 +1,37 @@
 import { Country } from './../Model/Country';
 
-
 export class CountryDL
 {
-    constructor ()
-    {
-        console.log ("DL instantiated");
-    } 
-
     async GetData (country?: string) : Promise<Country[]> {
         let endpoint : string = "https://corona.lmao.ninja/countries";
-        
-        let countries = new Array <Country>();
+
+        const countries = new Array <Country>();
 
         if (country != null)
-            endpoint = endpoint.concat ("/", country); 
+            endpoint = endpoint.concat ("/", country);
 
-        let response = await fetch(endpoint);
+        const response = await fetch(endpoint);
 
         if (!response.ok)
             throw new Error (response.statusText)
-            
-        let data = await response.json().then (d=> {return d;});
-    
+
+        const data = await response.json().then (d=> {return d;});
+
         if (country == null) {
             data.map((c: any) => {
-                let country = this.MapCountry(c);
-                countries.push (country);
+                const currentCountry = this.MapCountry(c);
+                countries.push (currentCountry);
             });
         }
         else {
-             let country = this.MapCountry (data);
-             countries.push (country);
+             const currentCountry = this.MapCountry (data);
+             countries.push (currentCountry);
         }
-             
         return countries;
     }
-    
+
     private MapCountry (c: any) {
-        let country = new Country();
+        const country = new Country();
         country.Name = c.country;
         country.Long = c.countryInfo.long;
         country.Lat = c.countryInfo.lat;
@@ -57,4 +50,4 @@ export class CountryDL
 
         return country;
     }
-} 
+}
